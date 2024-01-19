@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MovieVm>
+
+@{
+    ViewData["Title"] = "List of movies";
+}
+
+<h1>Movies</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success btn-sm">Add new movie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.MovieID" class="btn btn-outline-info btn-sm">Edit</a> 
+                    <a asp-action="AddActor" asp-route-id="@item.MovieID" class="btn btn-outline-warning btn-sm">Add actor</a>
+                    <a asp-action="Details" asp-route-id="@item.MovieID" class="btn btn-primary btn-sm">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.MovieID" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_ResponseMessage", "MovieMessage")
+

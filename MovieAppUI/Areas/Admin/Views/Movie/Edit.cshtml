@@ -1,0 +1,81 @@
+﻿@model MovieEditDto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>@Html.DisplayFor(m=>Model.OldMovie!.Title)</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OldMovie!.MovieID" />
+            <div class="form-group">
+                <label asp-for="OldMovie!.Title" class="control-label"></label>
+                <input asp-for="OldMovie!.Title" class="form-control" />
+                <span asp-validation-for="OldMovie!.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OldMovie!.ReleaseDate" class="control-label"></label>
+                <input asp-for="OldMovie!.ReleaseDate" class="form-control" />
+                <span asp-validation-for="OldMovie!.ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OldMovie!.Runtime" class="control-label"></label>
+                <input asp-for="OldMovie!.Runtime" class="form-control" />
+                <span asp-validation-for="OldMovie!.Runtime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OldMovie!.GenreID" class="control-label"></label>
+                <select asp-for="OldMovie!.GenreID" class="form-control" asp-items="ViewBag.GenreID"></select>
+                <span asp-validation-for="OldMovie!.GenreID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h4>Lista autorilor</h4>
+        @if (Model.ActorList!.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => Model.ActorList.FirstOrDefault()!.Name)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ActorList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-danger">No actor assigned!</p>
+        }
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

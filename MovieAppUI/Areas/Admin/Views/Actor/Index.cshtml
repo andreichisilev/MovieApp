@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ActorVm>
+
+@{
+    ViewData["Title"] = "List of actors";
+}
+
+<h1>Actors</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success btn-sm">Add new actor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ActorID" class="btn btn-outline-info btn-sm">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.ActorID" class="btn btn-primary btn-sm">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.ActorID" class="btn btn-outline-danger btn-sm">Delete</a>
+                    <a asp-action="ContactInfo" asp-route-id="@item.ActorID" class="btn btn-secondary btn-sm">Contact Info</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_ResponseMessage", "ActorMessage")
+

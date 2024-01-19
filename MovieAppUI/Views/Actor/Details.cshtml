@@ -1,0 +1,30 @@
+﻿@model ActorMoviesVm
+@{
+    ViewData["Title"] = "Actor details";
+}
+<section class="row">
+    <article class="me-2">
+        <h4>@Html.DisplayFor(m=>Model.ActorDetail!.FirstName) @Html.DisplayFor(m=>Model.ActorDetail!.LastName) </h4>
+        <hr/>
+        <h5>@Html.DisplayFor(m=>Model.ActorDetail!.Nationality)</h5>
+    </article>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @if (Model.Movies!.Count() > 0)
+    {
+        @foreach (var item in Model.Movies!)
+        {
+            <article class="me-2 col-lg-4">
+                @await Html.PartialAsync("Movie/_Card", item)
+            </article>
+        }
+    }
+
+    else
+    {
+        <article class="alert alert-warning" role="alert">This actor does not play in any movie!</article>
+    }
+    
+    
+</section>

@@ -1,0 +1,27 @@
+﻿@model MovieDetailsVm
+<section class="row">
+    <article class="me-2">
+        <h4>@Html.DisplayFor(m => Model.Title)</h4>
+    </article>
+    <article class="me-2">
+        <dl>
+            <dt>Actors:</dt>
+            <dd>
+                <ul>
+                    @foreach (var item in Model.ActorsList!)
+                    {
+                        <li><a asp-controller="Actor" asp-action="Details" asp-route-id="@item.ActorID">@Html.DisplayFor(m=>item.FirstName) @Html.DisplayFor(m => item.LastName)</a></li>
+                    }
+                </ul>
+            </dd>
+            <dt>Genre:</dt>
+            <dd>@Html.DisplayFor(m => Model.Genre)</dd>
+            <dt>Release Date:</dt>
+            <dd>@Html.DisplayFor(m => Model.ReleaseDate)</dd>
+            <dt>Runtime:</dt>
+            <dd>@Html.DisplayFor(m => Model.Runtime)</dd>
+        </dl>
+</section>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
