@@ -23,9 +23,11 @@
                 </tr>
             </thead>
             <tbody>
+                @{
+                    var index = 1;
+                }
                 @foreach (var item in Model)
                 {
-                    var index = 1;
                     <tr>
                         <th>
                             @(index++).
