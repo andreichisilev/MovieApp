@@ -41,6 +41,7 @@ namespace MovieAppUI.Areas.Admin.Controllers
         }
 
         // GET: Admin/Actor/Details/5
+        [Route("Admin/Actor/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Actors == null)

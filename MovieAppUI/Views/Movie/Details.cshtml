@@ -1,4 +1,7 @@
 ﻿@model MovieDetailsVm
+@{
+    ViewData["Title"] = "Movie Details";
+}
 <section class="row">
     <article class="me-2">
         <h4>@Html.DisplayFor(m => Model.Title)</h4>
@@ -23,5 +26,5 @@
         </dl>
 </section>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List</a>
 </div>
