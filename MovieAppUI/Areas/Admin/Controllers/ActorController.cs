@@ -9,10 +9,12 @@ using MovieAppUI.Areas.Admin.Models.DTOs;
 using MovieAppUI.Data;
 using MovieAppUI.Models.Entities;
 using MovieAppUI.Areas.Admin.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MovieAppUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Administrator")]
     public class ActorController : Controller
     {
         private readonly ApplicationDbContext _context;
