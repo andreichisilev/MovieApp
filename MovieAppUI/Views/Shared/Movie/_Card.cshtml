@@ -5,7 +5,7 @@
         <h4 class="card-text">@Html.DisplayFor(m => Model.Title)</h4>
             <h5 class="card-subtitle mb-2 text-body-secondary">@Html.DisplayFor(m => Model.ReleaseDate)</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">@Html.DisplayFor(m => Model.Runtime)</h6>
-            
-            <a asp-controller="Movie" asp-action="Details" asp-route-id="@Model.MovieID" class="card-link">Details</a>
+
+        <a asp-controller="Movie" asp-action="Details" asp-route-id="@Model.MovieID" class="btn btn-primary btn-sm">Details</a>
     </div>
 </div>
