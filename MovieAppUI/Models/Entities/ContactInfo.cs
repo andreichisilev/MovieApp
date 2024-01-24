@@ -12,10 +12,10 @@ namespace MovieAppUI.Models.Entities
         [ForeignKey(nameof(Id))]
         public Actor? Actor { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(100),EmailAddress]
         public string Email { get; set; } = string.Empty;
         
-        [MaxLength(15)]
+        [MaxLength(15),Phone]
         public string AgentPhoneNumber { get; set; } = string.Empty;
 
     }
