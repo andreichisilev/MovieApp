@@ -49,7 +49,9 @@ namespace MovieAppUI.Areas.Admin.Controllers
         // GET: Admin/ContactInfo/Create
         public IActionResult Create()
         {
-            ViewData["Id"] = new SelectList(_context.Actors, "Id", "LastName");
+            //Create select list for actors without actors that already have contact info
+            var actors = _context.Actors.Where(a => a.ContactInfo == null);
+            ViewData["Id"] = new SelectList(actors, "Id", "LastName");
             return View();
         }
 
